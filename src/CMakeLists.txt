@@ -21,6 +21,7 @@
  # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                                                           
  # SOFTWARE.                                                                                                                               
  ##
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
 SET(src Histogram.cpp)
 
 ADD_LIBRARY(probability ${src})
