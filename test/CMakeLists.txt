@@ -45,7 +45,7 @@ set(TESTS_LIBRARIES
 )
 
 # Create all the tests
-set(TEST_FILES HistogramTest.cpp)
+set(TEST_FILES StdoutWriterTest.cpp)
 set(ALL_TESTS)
 foreach(FILE ${TEST_FILES})
   string(REGEX REPLACE ".cpp" "" NAME ${FILE})
