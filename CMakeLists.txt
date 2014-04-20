@@ -24,15 +24,21 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.8)
 
 #Project name
-PROJECT(PROBABILITY_DISTIBUTION)
+PROJECT(STDOUT_WRITER)
 
+# Make sure files under cmake/ are made available
+set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR}/cmake )
 
 #Make sure we use C++11
-SET(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+#SET(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 
 
 #Make sure dependencies are available
 FIND_PACKAGE(Boost COMPONENTS unit_test_framework REQUIRED)
+MESSAGE(STATUS "Boost Libraries ${Boost_INCLUDE_DIRS}")
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
+INCLUDE( UseCython )
+#FIND_PACKAGE(Cython REQUIRED)
 
 #Include subdirectories
 ADD_SUBDIRECTORY(src)

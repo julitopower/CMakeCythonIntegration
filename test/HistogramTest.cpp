@@ -21,32 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  **/
-#define BOOST_TEST_MODULE HistogramTests
+#define BOOST_TEST_MODULE StdoutWriterTests
 #include <boost/test/unit_test.hpp>
 
-#include <Histogram.hpp>
+#include <StdoutWriter.hpp>
 
-BOOST_AUTO_TEST_CASE( TestAfterWinCountIs1 )
+BOOST_AUTO_TEST_CASE( TestDefaultConstructor )
 {
-  probability::Histogram h;
-  std::string event = "julio";
-  h.addWin(event);
-  BOOST_CHECK_EQUAL(h.getCount(event), 1);
+  StdoutWriter writer;
+  writer.write("Hi there");
+  writer.repeat();
 }
 
-BOOST_AUTO_TEST_CASE( TestAfterWinWinCountIs2 )
+BOOST_AUTO_TEST_CASE( TestConstructorWithMessage )
 {
-  probability::Histogram h;
-  std::string event = "julio";
-  h.addWin(event);
-  h.addWin(event);
-  BOOST_CHECK_EQUAL(h.getCount(event), 2);
-}
-
-BOOST_AUTO_TEST_CASE( TestUnknownEventCountIs0 )
-{
-  probability::Histogram h;
-  std::string event = "julio";
-  h.addWin(event);
-  BOOST_CHECK_EQUAL(h.getCount("what"), 0);
+  StdoutWriter writer("Hi you");
+  writer.repeat();
+  writer.write("Again");
+  writer.repeat();
 }

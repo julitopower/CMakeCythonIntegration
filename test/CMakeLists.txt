@@ -41,7 +41,7 @@ include_directories(${CMAKE_BINARY_DIR}) ### for config.h ###
 set(TESTS_LIBRARIES
   ${Boost_LIBRARIES}
   ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
-  probability
+  StdoutWriter
 )
 
 # Create all the tests

@@ -22,6 +22,16 @@
  # SOFTWARE.                                                                                                                               
  ##
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
-SET(src Histogram.cpp)
+SET(src StdoutWriter.cpp)
 
-ADD_LIBRARY(probability ${src})
+ADD_LIBRARY(StdoutWriter SHARED ${src})
+
+#Wire the Cython magic here
+# If the pyx file is a C++ file, we should specify that here.
+SET_SOURCE_FILES_PROPERTIES(
+  ${STDOUT_WRITER_SOURCE_DIR}/src/stdoutwriter.pyx
+  PROPERTIES CYTHON_IS_CXX TRUE )
+
+# Multi-file cython modules do not appear to be working at the moment.
+CYTHON_ADD_MODULE( stdoutwriter stdoutwriter.pyx)
+target_link_libraries(stdoutwriter StdoutWriter)
