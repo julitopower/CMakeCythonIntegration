@@ -17,3 +17,9 @@
 
 # CMake build folder
 build/
+
+# Python
+*.pyc
+
+#Other stuff
+.env/

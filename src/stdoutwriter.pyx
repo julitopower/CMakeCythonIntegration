@@ -21,7 +21,6 @@
  # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE                                                           
  # SOFTWARE.                                                                                                                               
  ##/
-#clib StdoutWriter
 from libcpp.string cimport string
 cdef extern from "StdoutWriter.hpp":
     cdef cppclass StdoutWriter:
