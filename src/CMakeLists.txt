@@ -41,3 +41,7 @@ target_link_libraries(stdoutwriter StdoutWriter)
 
 CYTHON_ADD_MODULE( adder adder.pyx)
 target_link_libraries( adder  Adder)
+set_target_properties(adder stdoutwriter PROPERTIES INSTALL_RPATH ${CMAKE_BINARY_DIR}/python/)
+INSTALL(FILES setup.py DESTINATION ${CMAKE_BINARY_DIR}/python/)
+INSTALL(TARGETS adder stdoutwriter Adder StdoutWriter LIBRARY DESTINATION ${CMAKE_BINARY_DIR}/python)
+INSTALL(CODE "execute_process(COMMAND python ${CMAKE_BINARY_DIR}/python/setup.py install -f WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/python/)")
