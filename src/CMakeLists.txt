@@ -25,8 +25,9 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
 SET(src StdoutWriter.cpp)
 SET(src_adder Adder.cpp)
 
-ADD_LIBRARY(Adder SHARED ${src_adder})
-ADD_LIBRARY(StdoutWriter SHARED ${src})
+# Generate Static Libraries for the C++ code
+ADD_LIBRARY(Adder ${src_adder})
+ADD_LIBRARY(StdoutWriter ${src})
 
 #Wire the Cython magic here
 # If the pyx file is a C++ file, we should specify that here.
@@ -41,7 +42,8 @@ target_link_libraries(stdoutwriter StdoutWriter)
 
 CYTHON_ADD_MODULE( adder adder.pyx)
 target_link_libraries( adder  Adder)
-set_target_properties(adder stdoutwriter PROPERTIES INSTALL_RPATH ${CMAKE_BINARY_DIR}/python/)
+
+# Finally install the Cython modules and the server launching module
 INSTALL(FILES setup.py DESTINATION ${CMAKE_BINARY_DIR}/python/)
-INSTALL(TARGETS adder stdoutwriter Adder StdoutWriter LIBRARY DESTINATION ${CMAKE_BINARY_DIR}/python)
+INSTALL(TARGETS adder stdoutwriter LIBRARY DESTINATION ${CMAKE_BINARY_DIR}/python)
 INSTALL(CODE "execute_process(COMMAND python ${CMAKE_BINARY_DIR}/python/setup.py install -f WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/python/)")

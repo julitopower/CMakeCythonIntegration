@@ -31,7 +31,9 @@ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR}/cmake )
 
 #Make sure we use C++11
 #SET(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
-
+# Compile Position Independent Code. This is a requirement of in order to allow
+# Python to load our cython modules.
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC") 
 
 #Make sure dependencies are available
 FIND_PACKAGE(Boost COMPONENTS unit_test_framework REQUIRED)

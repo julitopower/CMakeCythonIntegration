@@ -1,0 +1,5 @@
+Cython==0.20.1
+argparse==1.2.1
+ipython==2.0.0
+web.py==0.37
+wsgiref==0.1.2
